@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const Projects = require('./model.js');
 
+const {
+    checkProjectNameExists
+} = require('./middleware.js');
+
 router.get('/', (req, res, next) =>
 {
     Projects.getAll()
@@ -24,6 +28,18 @@ router.get('/:id', (req, res, next) =>
         {
             next(error);
         });
+});
+
+router.post('/', checkProjectNameExists, (req, res, next) =>
+{
+    const project = req.body;
+
+    Projects.add(project)
+        .then(project =>
+        {
+            res.status(201).json(project);
+        })
+        .catch(next);
 });
 
 module.exports = router;

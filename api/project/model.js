@@ -17,8 +17,28 @@ async function get(project_id)
     return project;
 }
 
+function findByProjectName(project_name)
+{
+    return db("projects")
+        .select("project_id", "project_name")
+        .where("project_name", project_name)
+        .first();
+}
+
+function add(project)
+{
+    return db('projects')
+        .insert(project)
+        .then(([project_id]) =>
+        {
+            return get(project_id);
+        });
+}
+
 module.exports =
 {
     getAll,
-    get
+    get,
+    findByProjectName,
+    add
 };
