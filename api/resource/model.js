@@ -17,6 +17,16 @@ async function get(resource_id)
     return resource;
 }
 
+async function getName(resource_id)
+{
+    const resource = await db('resources')
+        .select('resource_name')
+        .where('resource_id', resource_id)
+        .first();
+
+    return resource;
+}
+
 async function exists(name)
 {
     const resources = await db('resources')
@@ -31,7 +41,7 @@ function add(resource)
         .insert(resource)
         .then(([resource_id]) =>
         {
-            return get(resource_id);
+            return getName(resource_id);
         });
 }
 
@@ -39,6 +49,7 @@ module.exports =
 {
     getAll,
     get,
+    getName,
     exists,
     add
 };

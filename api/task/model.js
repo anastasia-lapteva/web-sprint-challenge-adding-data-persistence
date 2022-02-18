@@ -45,8 +45,21 @@ async function get(project_id)
     return tasks;
 }
 
+async function add(task)
+{
+    const [task_id] = await db('tasks').insert(task);
+
+    const newTask = await db('tasks')
+        .where('task_id', task_id)
+        .select('task_id', 'task_description', 'task_notes', 'task_completed', 'project_id')
+        .first();
+
+    return newTask;
+}
+
 module.exports =
 {
     getAll,
-    get
+    get,
+    add
 };

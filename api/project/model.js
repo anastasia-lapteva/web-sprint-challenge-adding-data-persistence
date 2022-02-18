@@ -25,6 +25,14 @@ function findByProjectName(project_name)
         .first();
 }
 
+function findByProjectId(project_id)
+{
+    return db("projects")
+        .select("project_id", "project_name")
+        .where("project_id", project_id)
+        .first();
+}
+
 function add(project)
 {
     return db('projects')
@@ -40,5 +48,6 @@ module.exports =
     getAll,
     get,
     findByProjectName,
+    findByProjectId,
     add
 };
