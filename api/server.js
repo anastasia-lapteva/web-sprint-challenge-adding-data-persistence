@@ -2,6 +2,7 @@ const express = require('express');
 
 const ResourceRouter = require('./resource/router.js');
 const ProjectRouter = require('./project/router.js');
+const TaskRouter = require('./task/router.js');
 
 const jsonErrorHandler = async (err, req, res, next) =>
 {
@@ -15,6 +16,7 @@ const server = express();
 server.use(express.json());
 server.use('/api/resources', ResourceRouter);
 server.use('/api/projects', ProjectRouter);
+server.use('/api/tasks', TaskRouter);
 server.use(jsonErrorHandler);
 
 module.exports = server;
