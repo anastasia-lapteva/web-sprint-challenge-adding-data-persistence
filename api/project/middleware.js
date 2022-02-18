@@ -1,19 +1,19 @@
 const Project = require('./model.js');
 
-async function checkProjectNameExists(req, res, next)
+async function checkProjectNameUnique(req, res, next)
 {
     try
     {
         const project_name = req.body.project_name;
-        const project = await Project.findByProjectName(project_name);
+        const exists = await Project.findByProjectName(project_name);
 
-        if (!project)
+        if (!exists)
         {
             next();
         }
         else
         {
-            next({ status: 400, message: "project_name already exists" });
+            next({ status: 400, message: `Project name ${req.body.project_name} already exists` });
         }
     }
     catch (err)
@@ -37,6 +37,6 @@ function checkProjectData(req, res, next)
 
 module.exports =
 {
-    checkProjectNameExists,
+    checkProjectNameUnique,
     checkProjectData
 };
