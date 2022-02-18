@@ -111,6 +111,19 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+
+In a relational database, the data is stored in tabular format grouped into rows and columns (similar to spreadsheets). A collection of rows is called a table. Each row represents a single record in the table and is made up of one or more columns. In summary, relational databases are databases that store their data in tables.
+
+SQL databases are known as relational databases, and have a table=based data structure, with a strict, predefined schema required.
+
 2. Why do tables need a Primary Key?
+
+Each database table needs a primary key because it ensures row-level accessibility. If you choose an appropriate primary key, you can specify a primary key value, which lets you query each table row individually and modify each row without altering other rows in the same table. The values that compose a primary key column are unique; no two values are the same.
+
 3. What is the name given to a table column that references the Primary Key on another table?
+
+A foreign key (FK) is a column or combination of columns that is used to establish and enforce a link between the data in two tables to control the data that can be stored in the foreign key table. In a foreign key reference, a link is created between two tables when the column or columns that hold the primary key value for one table are referenced by the column or columns in another table. This column becomes a foreign key in the second table.
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+
+ A junction table contains the primary key columns of the two tables you want to relate. AKA associative table.
