@@ -24,7 +24,7 @@ async function checkProjectNameUnique(req, res, next)
 
 function checkProjectData(req, res, next)
 {
-    if (!req.body.project_name || !req.body.project_name.trim() || req.body.project_name == "")
+    if (!req.body.project_name || !req.body.project_name.trim())
     {
         next({ status: 400, message: 'project_name required' });
     }
