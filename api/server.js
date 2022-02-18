@@ -1,5 +1,7 @@
 const express = require('express');
 
+const ProjectRouter = require('./project/router.js');
+
 const jsonErrorHandler = async (err, req, res, next) =>
 {
     res.header("Content-Type", 'application/json');
@@ -10,6 +12,7 @@ const jsonErrorHandler = async (err, req, res, next) =>
 const server = express();
 
 server.use(express.json());
+server.use('/api/projects', ProjectRouter);
 server.use(jsonErrorHandler);
 
 module.exports = server;
